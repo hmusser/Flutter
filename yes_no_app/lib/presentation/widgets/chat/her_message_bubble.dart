@@ -46,6 +46,18 @@ class _ImageBubble extends StatelessWidget {
         width: size.width * 0.7,
         height: 150,
         fit: BoxFit.cover,
+        loadingBuilder: (context, child, loadingProgress) {
+          //el child es la imagen final
+          if (loadingProgress == null)
+            return child; //Si la espera termino retorno el child.
+          return Container(
+            //Mientras se carga la imagen se retorna el container.
+            width: size.width * 0.7,
+            height: 150,
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: const Text('Mi amor está nviando una imagen'),
+          );
+        },
       ),
     );
   }
